@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const math = require('./math');
-
+const routes = require('./routes');
+const events = require('./events');
+const candidates = require('./candidates/routes');
 const app = express();
 
 
@@ -40,6 +42,12 @@ app.get("/calculator", function(req, res) {
   };
   res.json(resp);
 });
+
+
+
+app.use("/my", routes);
+app.use("/events", events);
+app.use("/candidates", candidates);
 
 
 app.listen(3000);
